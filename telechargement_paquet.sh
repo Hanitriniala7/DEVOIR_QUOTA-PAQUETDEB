@@ -2,7 +2,10 @@
 echo -e "Content-type: text/html\n"
 echo " "
 echo "<html><body>"
-echo "<h1> DEBIAN </h1>"
+echo "<h1> PAQUETS DEBIAN </h1>"
+
+sudo mkdir -p /var/www/html/archives # dossier qui contiendra les paquets .deb 
+sudo cp -rf /var/cache/apt/archives /var/www/html/archives #mettre à jour le cache d'Apache au cas ou un nouveau paquet .deb a été deplacé
 
 for i in $( ls /var/cache/apt/archives | grep -E '\.deb$' ) ; do
         echo "<p> $i <a href="/archives/$i" download>  Telecharger</a> </p>"
